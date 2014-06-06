@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TwitterPostInfo.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    NSMutableArray *twitterPosts;
+}
+
+
+
+-(void)twitterRefresh;
+
+
+-(TwitterPostInfo*) postInfoFromDictionary:(NSDictionary*)postDictionary;
+
+
+-(IBAction)onClick:(id)sender;
 
 @end
