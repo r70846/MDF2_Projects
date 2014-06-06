@@ -248,23 +248,29 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    DetailViewController *detailViewController = segue.destinationViewController;
     
-    if (detailViewController != nil)
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"segueToUserView"])
     {
         
-        //Cast the "sender" as a TableView Cell
-        UITableViewCell *cell = (UITableViewCell*)sender;
-        NSIndexPath *indexPath = [mainTableView indexPathForCell:cell];
-        
-        //Get TwitterPostInfo object from the array based on the item in the tableview we clicked on
-        TwitterPostInfo *currentTweet = [twitterPosts objectAtIndex:indexPath.row];
-        
-        //Set the currentTweet property in detail view to the chosen one
-        detailViewController.currentTweet = currentTweet;
-        
     }
+    else //segueToDetailView
+    {
+        DetailViewController *detailViewController = segue.destinationViewController;
     
+        if (detailViewController != nil)
+        {
+            //Cast the "sender" as a TableView Cell
+            UITableViewCell *cell = (UITableViewCell*)sender;
+            NSIndexPath *indexPath = [mainTableView indexPathForCell:cell];
+        
+            //Get TwitterPostInfo object from the array based on the item in the tableview we clicked on
+            TwitterPostInfo *currentTweet = [twitterPosts objectAtIndex:indexPath.row];
+        
+            //Set the currentTweet property in detail view to the chosen one
+            detailViewController.currentTweet = currentTweet;
+        }
+    }
 }
 
 -(IBAction)done:(UIStoryboardSegue*)segue

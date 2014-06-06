@@ -85,6 +85,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qwM-Jh-C8i"/>
+                                    <segue destination="buz-Oa-kMl" kind="modal" identifier="segueToUserView" id="7xH-TP-1ak"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTh-Q4-aqu">
@@ -106,6 +107,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="Z5e-4N-vxL">
+            <objects>
+                <viewController id="buz-Oa-kMl" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TXv-th-47y">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QmI-iL-Rwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771" y="-364"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="eDy-6v-auz">
@@ -152,7 +168,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4Y-El-ZUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="S8h-YY-SIP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="677" y="26"/>
+            <point key="canvasLocation" x="801" y="318"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

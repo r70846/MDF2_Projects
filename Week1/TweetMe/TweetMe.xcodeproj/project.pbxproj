@@ -28,6 +28,7 @@
 		60BB6BAB19415799001D21A6 /* birdL.png in Resources */ = {isa = PBXBuildFile; fileRef = 60BB6BA919415799001D21A6 /* birdL.png */; };
 		60BB6BAC19415799001D21A6 /* birdR.png in Resources */ = {isa = PBXBuildFile; fileRef = 60BB6BAA19415799001D21A6 /* birdR.png */; };
 		60BB6BAF19423C73001D21A6 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BB6BAE19423C72001D21A6 /* DetailViewController.m */; };
+		60BB6BB2194283BA001D21A6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BB6BB1194283B8001D21A6 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		60BB6BAA19415799001D21A6 /* birdR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birdR.png; sourceTree = "<group>"; };
 		60BB6BAD19423C72001D21A6 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		60BB6BAE19423C72001D21A6 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		60BB6BB0194283B8001D21A6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		60BB6BB1194283B8001D21A6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 				60BB6B7C19414C07001D21A6 /* Main.storyboard */,
 				60BB6BAD19423C72001D21A6 /* DetailViewController.h */,
 				60BB6BAE19423C72001D21A6 /* DetailViewController.m */,
+				60BB6BB0194283B8001D21A6 /* ProfileViewController.h */,
+				60BB6BB1194283B8001D21A6 /* ProfileViewController.m */,
 				60BB6B7F19414C07001D21A6 /* ViewController.h */,
 				60BB6B8019414C07001D21A6 /* ViewController.m */,
 				60BB6BA919415799001D21A6 /* birdL.png */,
@@ -284,6 +289,7 @@
 				60BB6BA519414CF3001D21A6 /* TwitterPostInfo.m in Sources */,
 				60BB6B7B19414C07001D21A6 /* AppDelegate.m in Sources */,
 				60BB6BA8194151EE001D21A6 /* TweetCell.m in Sources */,
+				60BB6BB2194283BA001D21A6 /* ProfileViewController.m in Sources */,
 				60BB6B7719414C07001D21A6 /* main.m in Sources */,
 				60BB6BAF19423C73001D21A6 /* DetailViewController.m in Sources */,
 			);
