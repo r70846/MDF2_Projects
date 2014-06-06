@@ -24,6 +24,9 @@
 		60BB6BA019414C1C001D21A6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BB6B9F19414C1C001D21A6 /* Accounts.framework */; };
 		60BB6BA219414C26001D21A6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BB6BA119414C25001D21A6 /* Social.framework */; };
 		60BB6BA519414CF3001D21A6 /* TwitterPostInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BB6BA419414CF3001D21A6 /* TwitterPostInfo.m */; };
+		60BB6BA8194151EE001D21A6 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BB6BA7194151EE001D21A6 /* TweetCell.m */; };
+		60BB6BAB19415799001D21A6 /* birdL.png in Resources */ = {isa = PBXBuildFile; fileRef = 60BB6BA919415799001D21A6 /* birdL.png */; };
+		60BB6BAC19415799001D21A6 /* birdR.png in Resources */ = {isa = PBXBuildFile; fileRef = 60BB6BAA19415799001D21A6 /* birdR.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,10 @@
 		60BB6BA119414C25001D21A6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		60BB6BA319414CF3001D21A6 /* TwitterPostInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterPostInfo.h; path = ../../../../MDF2_Sandbox/accountsTest/accountsTest/TwitterPostInfo.h; sourceTree = "<group>"; };
 		60BB6BA419414CF3001D21A6 /* TwitterPostInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterPostInfo.m; path = ../../../../MDF2_Sandbox/accountsTest/accountsTest/TwitterPostInfo.m; sourceTree = "<group>"; };
+		60BB6BA6194151EE001D21A6 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		60BB6BA7194151EE001D21A6 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		60BB6BA919415799001D21A6 /* birdL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birdL.png; sourceTree = "<group>"; };
+		60BB6BAA19415799001D21A6 /* birdR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birdR.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +135,10 @@
 				60BB6B7C19414C07001D21A6 /* Main.storyboard */,
 				60BB6B7F19414C07001D21A6 /* ViewController.h */,
 				60BB6B8019414C07001D21A6 /* ViewController.m */,
+				60BB6BA919415799001D21A6 /* birdL.png */,
+				60BB6BAA19415799001D21A6 /* birdR.png */,
+				60BB6BA6194151EE001D21A6 /* TweetCell.h */,
+				60BB6BA7194151EE001D21A6 /* TweetCell.m */,
 				60BB6BA319414CF3001D21A6 /* TwitterPostInfo.h */,
 				60BB6BA419414CF3001D21A6 /* TwitterPostInfo.m */,
 				60BB6B8219414C07001D21A6 /* Images.xcassets */,
@@ -242,8 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				60BB6B8319414C07001D21A6 /* Images.xcassets in Resources */,
+				60BB6BAB19415799001D21A6 /* birdL.png in Resources */,
 				60BB6B7519414C07001D21A6 /* InfoPlist.strings in Resources */,
 				60BB6B7E19414C07001D21A6 /* Main.storyboard in Resources */,
+				60BB6BAC19415799001D21A6 /* birdR.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +278,7 @@
 				60BB6B8119414C07001D21A6 /* ViewController.m in Sources */,
 				60BB6BA519414CF3001D21A6 /* TwitterPostInfo.m in Sources */,
 				60BB6B7B19414C07001D21A6 /* AppDelegate.m in Sources */,
+				60BB6BA8194151EE001D21A6 /* TweetCell.m in Sources */,
 				60BB6B7719414C07001D21A6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import "TwitterPostInfo.h"
-
+#import "TweetCell.h"
 
 //Twitter REST API Documentation ///////////
 //https://dev.twitter.com/docs/api/1.1
@@ -34,6 +34,16 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    
+    [self twitterRefresh];
+    
+    [super viewWillAppear:animated];
+    //[self->mainTableView reloadData]; // to reload selected cell
 }
 
 
@@ -67,13 +77,20 @@
                             [request setAccount:currentAccount];
                             
                             //Actually perform the request
+
+                            
                             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                                
+                                
                                 
                                 //http status code 200 = "OK"
                                 if(error == nil && [urlResponse statusCode] == 200)
                                 {
                                     //Consult twitter documentation to determine if data is Array or Dictionary
                                     NSArray *twitterFeed = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+                                    
+                                    
+                                    //NSLog(@"Twitter feed: %@", [twitterFeed description]);
                                     
                                     //Loop though twitter posts
                                     for (NSInteger i=0; i<[twitterFeed count]; i++)
@@ -84,10 +101,11 @@
                                         {
                                             [twitterPosts addObject:currentPostInfo];
                                             
-                                            //NSLog(@"TwitterPosts:%@",[twitterPosts description]);
+                                            NSLog(@"TwitterPosts:%d",[twitterPosts count]);
                                         }
                                         
                                     }
+                                
                                 }
                             }];
                             
@@ -102,6 +120,7 @@
         }
     }
 }
+
 
 
 -(TwitterPostInfo*) postInfoFromDictionary:(NSDictionary*)postDictionary
@@ -146,6 +165,7 @@
         //Number of rows in table will equal the number of tweet objects in my data array
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+     NSLog(@"TwitterPost Cells:%d",[twitterPosts count]);
     
     return [twitterPosts count];
 }
@@ -155,13 +175,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    
-                /*
-    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
 
     if (cell != nil)
     {
+        
+        NSLog(@"cell is NOT nil");
+        
+        TwitterPostInfo *currentPost = [twitterPosts objectAtIndex:indexPath.row];
+        [cell refreshCellWithInfo:currentPost.tweetText dateTimeString:currentPost.dateTime iconImage:[UIImage imageNamed:@"birdR.png"]];
+    }
+    else
+    {
+        NSLog(@"cell is nil");
+    }
 
+        
+        
+                /*
+        
         GigDateClass *currentGigDate = [gigDateArray objectAtIndex:indexPath.row];
         
         
@@ -191,7 +223,7 @@
     }
     return cell;
         */
-    return nil;
+    return cell;
          
 }
 

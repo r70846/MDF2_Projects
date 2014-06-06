@@ -12,6 +12,17 @@
 @interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray *twitterPosts;
+    
+    
+    
+    IBOutlet UIButton *btnRefresh;
+    IBOutlet UIButton *btnUser;
+    IBOutlet UIButton *btnPost;
+    
+    
+    
+    
+    IBOutlet UITableView *mainTableView;    //Table view reference
 }
 
 
@@ -23,5 +34,7 @@
 
 
 -(IBAction)onClick:(id)sender;
+
+
 
 @end
