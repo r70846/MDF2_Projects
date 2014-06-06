@@ -11,6 +11,7 @@
 #import <Social/Social.h>
 #import "TwitterPostInfo.h"
 #import "TweetCell.h"
+#import "DetailViewController.h"
 
 //Twitter REST API Documentation ///////////
 //https://dev.twitter.com/docs/api/1.1
@@ -38,9 +39,8 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
+
     
-    
-    [self twitterRefresh];
     
     [super viewWillAppear:animated];
     //[self->mainTableView reloadData]; // to reload selected cell
@@ -49,6 +49,11 @@
 
 -(void)twitterRefresh
 {
+    
+    //Makes ure we start over with an empty array
+    [twitterPosts removeAllObjects ];
+    
+    
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     
     if(accountStore != nil)
@@ -90,7 +95,7 @@
                                     NSArray *twitterFeed = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                                     
                                     
-                                    //NSLog(@"Twitter feed: %@", [twitterFeed description]);
+                                    NSLog(@"Twitter feed: %@", [twitterFeed description]);
                                     
                                     //Loop though twitter posts
                                     for (NSInteger i=0; i<[twitterFeed count]; i++)
@@ -101,9 +106,17 @@
                                         {
                                             [twitterPosts addObject:currentPostInfo];
                                             
-                                            NSLog(@"TwitterPosts:%d",[twitterPosts count]);
+                                            //NSLog(@"TwitterPosts:%d",[twitterPosts count]);
                                         }
                                         
+                                        //Reload the table after the data is loaded
+                                        [mainTableView reloadData];
+                                        
+
+                                        //May qualify as a hack - scrolling to top seems to assist initial data load
+                                        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                                        
+                                        [mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
                                     }
                                 
                                 }
@@ -149,24 +162,31 @@
 -(IBAction)onClick:(id)sender
 {
     
-    //Create built-in Specialized view ocntroller
-    SLComposeViewController *slComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    UIButton *btn = (UIButton*) sender;
     
-    
-    [slComposeViewController setInitialText:@"This is default text..."];
-    [slComposeViewController addImage:[UIImage imageNamed:@"inFrance.jpg"]];
-    
-    //Display view controllew
-    [self presentViewController:slComposeViewController animated:true completion:nil];
-    
+    if(btn.tag == 1)
+    {
+        
+        [self twitterRefresh];
+    }
+    else if(btn.tag == 2)
+    {
+        //Create built-in Specialized view ocntroller
+        SLComposeViewController *slComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        
+        [slComposeViewController setInitialText:@"Posted from TweetMe: "];
+        //[slComposeViewController addImage:[UIImage imageNamed:@"birdL.png"]];
+        
+        //Display view controllew
+        [self presentViewController:slComposeViewController animated:true completion:nil];
+    }
 }
 
 
         //Number of rows in table will equal the number of tweet objects in my data array
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-     NSLog(@"TwitterPost Cells:%d",[twitterPosts count]);
-    
     return [twitterPosts count];
 }
 
@@ -179,9 +199,6 @@
 
     if (cell != nil)
     {
-        
-        NSLog(@"cell is NOT nil");
-        
         TwitterPostInfo *currentPost = [twitterPosts objectAtIndex:indexPath.row];
         [cell refreshCellWithInfo:currentPost.tweetText dateTimeString:currentPost.dateTime iconImage:[UIImage imageNamed:@"birdR.png"]];
     }
@@ -225,6 +242,34 @@
         */
     return cell;
          
+}
+
+//Called when we go to the detail view
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    DetailViewController *detailViewController = segue.destinationViewController;
+    
+    if (detailViewController != nil)
+    {
+        
+        //Cast the "sender" as a TableView Cell
+        UITableViewCell *cell = (UITableViewCell*)sender;
+        NSIndexPath *indexPath = [mainTableView indexPathForCell:cell];
+        
+        //Get TwitterPostInfo object from the array based on the item in the tableview we clicked on
+        TwitterPostInfo *currentTweet = [twitterPosts objectAtIndex:indexPath.row];
+        
+        //Set the currentTweet property in detail view to the chosen one
+        detailViewController.currentTweet = currentTweet;
+        
+    }
+    
+}
+
+-(IBAction)done:(UIStoryboardSegue*)segue
+{
+    //DetailViewController *detailView = segue.sourceViewController;
 }
 
 - (void)didReceiveMemoryWarning

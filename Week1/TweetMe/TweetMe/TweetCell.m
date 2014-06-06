@@ -31,10 +31,6 @@
     tweetLabel.text = tweetString;
     dateTimeLabel.text = dateTimeString;
     iconView.image = iconImage;
-    
-    
-    NSLog(@"Made it here");
-    
 }
 
 
