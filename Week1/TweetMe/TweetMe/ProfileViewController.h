@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
 @interface ProfileViewController : UIViewController
 {
@@ -22,7 +24,7 @@
 
 
 //Set the object property
-@property (nonatomic, strong) NSString *screenName;
+@property (nonatomic, strong) ACAccount *currentAccount;
 
 -(void)getUserData;
 

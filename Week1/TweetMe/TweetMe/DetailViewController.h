@@ -11,8 +11,11 @@
 
 @interface DetailViewController : UIViewController
 {
+    
+    IBOutlet UILabel *posterNameLabel;
     IBOutlet UILabel *tweetLabel;
     IBOutlet UILabel *dateTimeLabel;
+    
 }
 
 //Set the object property

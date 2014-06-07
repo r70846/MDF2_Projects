@@ -12,6 +12,7 @@
 #import "TwitterPostInfo.h"
 #import "TweetCell.h"
 #import "DetailViewController.h"
+#import "ProfileViewController.h"
 
 //Twitter REST API Documentation ///////////
 //https://dev.twitter.com/docs/api/1.1
@@ -68,12 +69,14 @@
                     NSArray *twitterAccounts = [accountStore accountsWithAccountType:accountType];
                     if(twitterAccounts != nil)
                     {
-                        ACAccount *currentAccount = [twitterAccounts objectAtIndex:0];
+                        //Take the first twitter account in the list
+                        //ACAccount *currentAccount 
+                        currentAccount = [twitterAccounts objectAtIndex:0];
+                        
                         if(currentAccount != nil)
                         {
                             
-                            //Twitter API call
-                            
+                            //Twitter API call to retrieve timeline
                             NSString *requestString = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
                             
                             SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:requestString] parameters:nil];
@@ -82,11 +85,7 @@
                             [request setAccount:currentAccount];
                             
                             //Actually perform the request
-
-                            
                             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                                
-                                
                                 
                                 //http status code 200 = "OK"
                                 if(error == nil && [urlResponse statusCode] == 200)
@@ -95,7 +94,7 @@
                                     NSArray *twitterFeed = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                                     
                                     
-                                    NSLog(@"Twitter feed: %@", [twitterFeed description]);
+                                   // NSLog(@"Twitter feed: %@", [twitterFeed description]);
                                     
                                     //Loop though twitter posts
                                     for (NSInteger i=0; i<[twitterFeed count]; i++)
@@ -147,13 +146,14 @@
     NSDictionary *userInfoDictionary = [postDictionary objectForKey:@"user"];
     NSString *nameString = [userInfoDictionary valueForKey:@"screen_name"];
     NSString *descString = [userInfoDictionary valueForKey:@"description"];
-    
-    //The actual tweet text
+    NSString *posterString = [userInfoDictionary valueForKey:@"name"];
     NSString *tweetString = [postDictionary valueForKey:@"text"];
     
     
+    NSLog(@"%@",posterString);
+    
     //Create my custom object with my custom init method
-    TwitterPostInfo *postInfo = [[TwitterPostInfo alloc] initWithPostInfo:nameString userDesc:descString text:tweetString dateTimeInfo:timeDateString];
+    TwitterPostInfo *postInfo = [[TwitterPostInfo alloc] initWithPostInfo:nameString userDesc:descString poster:posterString text:tweetString dateTimeInfo:timeDateString];
     
     return postInfo;
 }
@@ -219,7 +219,14 @@
     // Make sure your segue name in storyboard is the same as this line
     if ([[segue identifier] isEqualToString:@"segueToUserView"])
     {
-        
+        ProfileViewController *profileViewController = segue.destinationViewController;
+
+        if (profileViewController != nil)
+        {
+            //Set the sceenname property in profile view to account profile name
+            profileViewController.currentAccount = currentAccount;
+            
+        }
     }
     else //segueToDetailView
     {

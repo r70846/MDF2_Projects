@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TwitterPostInfo.h"
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
 @interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
@@ -19,8 +21,8 @@
     IBOutlet UIButton *btnUser;
     IBOutlet UIButton *btnPost;
     
-    
-    
+    //Retain current account
+    ACAccount *currentAccount;
     
     IBOutlet UITableView *mainTableView;    //Table view reference
 }

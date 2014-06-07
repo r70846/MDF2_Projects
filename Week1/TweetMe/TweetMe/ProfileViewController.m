@@ -45,7 +45,11 @@
 -(void)getUserData
 {
     
-
+    
+    
+    
+    //Save the user name/screen name for profile data page
+    //accountUserName = currentAccount.username;
     
     
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];

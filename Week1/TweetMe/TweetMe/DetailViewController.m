@@ -26,7 +26,8 @@
 
 - (void)viewDidLoad
 {
-    
+    posterNameLabel.text = self.currentTweet.posterName;
+    dateTimeLabel.text = self.currentTweet.dateTime;
     tweetLabel.text = self.currentTweet.tweetText;
     
     
