@@ -16,10 +16,15 @@
     IBOutlet UILabel *numFollowersLabel;
     IBOutlet UILabel *numFriendsLabel;
     
-    
 }
 
+-(void)displayProfileData:(NSString*)nameString descString:(NSString*)descString numFollower:(NSNumber*)numFollower numFriend:(NSNumber*)numFriend;
 
+
+//Set the object property
+@property (nonatomic, strong) NSString *screenName;
+
+-(void)getUserData;
 
 
 @end

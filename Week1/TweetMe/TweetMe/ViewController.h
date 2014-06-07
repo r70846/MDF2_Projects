@@ -35,6 +35,7 @@
 
 -(IBAction)onClick:(id)sender;
 
+-(IBAction)done:(UIStoryboardSegue*)segue;
 
 
 @end

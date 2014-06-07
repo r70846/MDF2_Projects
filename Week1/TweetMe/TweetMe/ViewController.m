@@ -207,39 +207,6 @@
         NSLog(@"cell is nil");
     }
 
-        
-        
-                /*
-        
-        GigDateClass *currentGigDate = [gigDateArray objectAtIndex:indexPath.row];
-        
-        
-        //Create format for day
-        NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
-        if (dayFormatter != nil)
-        {
-            [dayFormatter setDateFormat:@"EEE"];
-        }
-        
-        //Build the date into a string based on my day format
-        NSString *dateDay = [[NSString alloc] initWithFormat:@"%@", [dayFormatter stringFromDate: currentGigDate.date]];
-        
-        //Create format for date
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        if (dateFormatter != nil)
-        {
-            [dateFormatter setDateFormat:@"M/dd/YY"];
-        }
-        
-        //Build the date into a string based on my day format
-        NSString *dateDate = [[NSString alloc] initWithFormat:@"%@", [dateFormatter stringFromDate: currentGigDate.date]];
-        
-        
-        [cell refreshCellWithInfo:dateDay dateString:dateDate eventString:currentGigDate.venue cellImage:currentGigDate.flag];
-
-    }
-    return cell;
-        */
     return cell;
          
 }
