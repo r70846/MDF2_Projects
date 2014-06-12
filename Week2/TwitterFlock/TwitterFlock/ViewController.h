@@ -10,10 +10,14 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 {
     
     NSMutableArray *twitterFollowers;
+    
+    
+    
+    IBOutlet UICollectionView *mainCollectionView;    //Collection view reference
 }
 
 

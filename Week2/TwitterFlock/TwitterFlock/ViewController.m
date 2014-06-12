@@ -10,6 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import "FollowerInfo.h"
+#import "CustomCollectionCell.h"
 
 @interface ViewController ()
 
@@ -36,6 +37,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [twitterFollowers count];
+    //return 10;
+    
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //UICollectionViewCell  *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"idCell" forIndexPath:indexPath];
+    CustomCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"idCell" forIndexPath:indexPath];
+    
+    if(cell != nil)
+    {
+        
+        //
+        //int albumIndex = (indexPath.row % 5) + 1;
+        //NSString *imageName = [NSString stringWithFormat:@"img/cover%d.jpg", albumIndex];
+        //[cell resetWithLabel:@"Album" cellImage:[UIImage imageNamed:imageName]];
+        FollowerInfo *friend = [twitterFollowers objectAtIndex:indexPath.row];
+        
+        [cell resetWithLabel:friend.screenName cellImage:friend.avatarImage];
+        
+    }
+    return cell;
+}
+
 
 
 -(void)getFriendData
@@ -125,12 +156,29 @@
                                         
                                             //Pass screen_name from JSON to my custom object
                                             currentFollower.screenName = [friendData objectForKey:@"screen_name"];
-                                        
+
+                                            //Retrieve image from the URL string in twitter's JSON data to my custom object
+                                            NSString *imageString = [friendData objectForKey:@"profile_image_url"];
+                                            NSURL *imageURL = [NSURL URLWithString:imageString];
+                                            NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
+                                            currentFollower.avatarImage = [UIImage imageWithData:imageData];
+
+                                            
+                                            
+                                            //Pass image from the URL in twitter's JSON data to my custom object
+                                            //NSString *imageURL = [friendData objectForKey:@"profile_image_url"];
+                                            //currentFollower.avatarImage = [UIImage imageNamed:imageURL];
+                                            
                                             //Add the new FollowerInfo object to my array
                                             [twitterFollowers addObject:currentFollower];
                                         }
 
                                     }
+                                    
+                                    
+                                    //Reload the collection view after the data is loaded
+                                    [mainCollectionView reloadData];
+                                    
                                     
                                     for (NSInteger x=0; x<[twitterFollowers count]; x++)
                                     {
