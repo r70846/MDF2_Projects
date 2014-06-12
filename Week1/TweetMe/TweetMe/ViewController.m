@@ -113,24 +113,20 @@
                                     //Loop though twitter posts
                                     for (NSInteger i=0; i<[twitterFeed count]; i++)
                                     {
-                                        
                                         TwitterPostInfo *currentPostInfo = [self postInfoFromDictionary:[twitterFeed objectAtIndex:i]];
                                         if(currentPostInfo != nil)
                                         {
                                             [twitterPosts addObject:currentPostInfo];
                                             
                                         }
-                                        
-                                        //Reload the table after the data is loaded
-                                        [mainTableView reloadData];
-                                        
-
-                                        //May qualify as a hack - scrolling to top seems to assist initial data load
-                                        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-                                        
-                                        [mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-                                        
                                     }
+                                    
+                                    //Reload the table after the data is loaded
+                                    [mainTableView reloadData];
+                                    
+                                    //May qualify as a hack - scrolling to top seems to assist initial data load
+                                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                                    [mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
                                 
                                 }
                             }];
