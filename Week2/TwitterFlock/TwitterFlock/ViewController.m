@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "FollowerInfo.h"
 
 @interface ViewController ()
 
@@ -18,6 +19,11 @@
 
 - (void)viewDidLoad
 {
+    
+    //Create array to hold twitter friends (FollowerInfo objects)
+    twitterFollowers = [[NSMutableArray alloc] init];
+    
+    
     [self getFriendData];
     
     
@@ -59,8 +65,7 @@
                     if(twitterAccounts != nil)
                     {
                         //Take the first twitter account in the list
-                        //ACAccount *currentAccount
-                        currentAccount = [twitterAccounts objectAtIndex:0];
+                        ACAccount *currentAccount = [twitterAccounts objectAtIndex:0];
                         
                         if(currentAccount != nil)
                         {
@@ -91,49 +96,49 @@
                                     //Consult twitter documentation to determine if data is Array or Dictionary
                                    // NSArray *friendData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                                     
-                                    
+                                    //Dictionary Object to hold entire data return Twitter JSON
                                     NSDictionary *returnData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                                     
                                     //NSLog(@"Friend Data:%@",[returnData description]);
                                     
+                                    //Array to hold only the "users" data from Twitter JSON return
                                     NSArray *friendsArray =  [returnData objectForKey:@"users"];
                                     
                                     //NSLog(@"Friends Array:%@",[friendsArray description]);
                                     
-                                    NSDictionary *friendData = [friendsArray objectAtIndex:0];
+                                    //Dictionary Object to hold data on each user from Twitter JSON return
+                                    //NSDictionary *friendData = [friendsArray objectAtIndex:0];
                                     
-                                    NSLog(@"Friends Array:%@",[friendData description]);
+                                    //NSLog(@"Friends Array:%@",[friendData description]);
                                     
                                     //Loop though friends
                                     for (NSInteger i=0; i<[friendsArray count]; i++)
                                     {
                                         
-
+                                        //Dictionary Object to hold data on current friend from Twitter JSON return
+                                        NSDictionary *friendData = [friendsArray objectAtIndex:i];
                                         
-                                        
-                                        
-                                        /* TWITTER POST STUFF
-                                        TwitterPostInfo *currentPostInfo = [self postInfoFromDictionary:[twitterFeed objectAtIndex:i]];
-                                        
-                                        if(currentPostInfo != nil)
+                                        if(friendData != nil)
                                         {
-                                            [twitterPosts addObject:currentPostInfo];
-                                            
+                                            //Create my custom object to hold friend data once retrieved
+                                            FollowerInfo *currentFollower = [[FollowerInfo alloc] init];
+                                        
+                                            //Pass screen_name from JSON to my custom object
+                                            currentFollower.screenName = [friendData objectForKey:@"screen_name"];
+                                        
+                                            //Add the new FollowerInfo object to my array
+                                            [twitterFollowers addObject:currentFollower];
                                         }
-                                        */
-                                        
-                                        /*  TABLE STUFF
-                                         
-                                        //Reload the table after the data is loaded
-                                        [mainTableView reloadData];
-                                        
-                                        
-                                        //May qualify as a hack - scrolling to top seems to assist initial data load
-                                        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-                                        [mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-                                        */
+
                                     }
                                     
+                                    for (NSInteger x=0; x<[twitterFollowers count]; x++)
+                                    {
+                                        
+                                        FollowerInfo *friend = [twitterFollowers objectAtIndex:x];
+                                        
+                                        NSLog(@"twitterFollower %d = %@", x + 1, friend.screenName);
+                                    }
                                 }
                                 else
                                 {

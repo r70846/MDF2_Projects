@@ -13,9 +13,7 @@
 @interface ViewController : UIViewController
 {
     
-    //Retain current account
-    ACAccount *currentAccount;
-    
+    NSMutableArray *twitterFollowers;
 }
 
 

@@ -23,6 +23,7 @@
 		603F52E019496CA600716A65 /* TwitterFlockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 603F52DF19496CA600716A65 /* TwitterFlockTests.m */; };
 		603F52EA19496EE900716A65 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603F52E919496EE900716A65 /* Accounts.framework */; };
 		603F52EC19496EF900716A65 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603F52EB19496EF900716A65 /* Social.framework */; };
+		603F52EF19497D0200716A65 /* FollowerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 603F52EE19497D0200716A65 /* FollowerInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		603F52DF19496CA600716A65 /* TwitterFlockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterFlockTests.m; sourceTree = "<group>"; };
 		603F52E919496EE900716A65 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		603F52EB19496EF900716A65 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		603F52ED19497D0200716A65 /* FollowerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowerInfo.h; sourceTree = "<group>"; };
+		603F52EE19497D0200716A65 /* FollowerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowerInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 		603F52A819496CA600716A65 = {
 			isa = PBXGroup;
 			children = (
+				603F52ED19497D0200716A65 /* FollowerInfo.h */,
+				603F52EE19497D0200716A65 /* FollowerInfo.m */,
 				603F52BA19496CA600716A65 /* TwitterFlock */,
 				603F52D919496CA600716A65 /* TwitterFlockTests */,
 				603F52B319496CA600716A65 /* Frameworks */,
@@ -260,6 +265,7 @@
 				603F52CB19496CA600716A65 /* ViewController.m in Sources */,
 				603F52C519496CA600716A65 /* AppDelegate.m in Sources */,
 				603F52C119496CA600716A65 /* main.m in Sources */,
+				603F52EF19497D0200716A65 /* FollowerInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
