@@ -5,6 +5,14 @@
 //  Created by Russell Gaspard on 6/6/14.
 //  Copyright (c) 2014 Russell Gaspard. All rights reserved.
 //
+/*
+ 
+ Russ Gaspard
+ Week 1
+ Mobile Development
+ MDF2 1406
+ 
+ */
 
 #import "ProfileViewController.h"
 #import <Accounts/Accounts.h>
@@ -32,10 +40,10 @@
     //https://dev.twitter.com/docs/api/1.1/get/users/show
     ///////////////////////////////////////////////////////
     
-    
+    //Display nothing until data loads
     [self displayProfileData:@"" descString:@"" numFollower:nil numFriend:nil];
 
-    
+    //Load and display data
     [self getUserData];
     
     [super viewDidLoad];
@@ -44,80 +52,47 @@
 
 -(void)getUserData
 {
-    
-    
-    
-    
-    //Save the user name/screen name for profile data page
-    //accountUserName = currentAccount.username;
-    
-    
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    
-    if(accountStore != nil)
+    if(_currentAccount != nil)
     {
-        ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-        if(accountType != nil)
-        {
-            [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-                if(granted)
-                {
-                    //Success
-                    NSArray *twitterAccounts = [accountStore accountsWithAccountType:accountType];
-                    if(twitterAccounts != nil)
-                    {
-                        ACAccount *currentAccount = [twitterAccounts objectAtIndex:0];
-                        if(currentAccount != nil)
-                        {
-                            
-                            //Twitter API call
-                            
-                            //NSString *requestString = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
-                            NSString *requestString = @"https://api.twitter.com/1.1/users/show.json";
-                            
-                            //Set up parameters for call (really just single screen_name param
-                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"russellmgaspard", @"screen_name",nil];
-                            
-                            
-                            SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:requestString] parameters:params];
-                            
-                            //Authenticate request
-                            [request setAccount:currentAccount];
-                            
-                            //Actually perform the request
-                            
-                            
-                            [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                                
-                                
-                                
-                                //http status code 200 = "OK"
-                                if(error == nil && [urlResponse statusCode] == 200)
-                                {
-                                    
-                                    NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-
-                                    NSString *name = [userData objectForKey:@"name"];
-                                    NSString *desc =[userData objectForKey:@"description"];
-                                    NSNumber *followers = [userData objectForKey:@"followers_count"];
-                                    NSNumber *friends = [userData objectForKey:@"followers_count"];
-                                    
-                                    //Pass date to display function
-                                    [self displayProfileData:name descString:desc numFollower:followers numFriend:friends];
-                                    
-                                }
-                            }];
-                            
-                        }
-                    }
-                }
-                else
-                {
-                    //The user says no
-                }
-            }];
-        }
+        
+        //Twitter API call
+        NSString *requestString = @"https://api.twitter.com/1.1/users/show.json";
+        
+        //Set up parameters for call (really just single screen_name param
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_currentAccount.username, @"screen_name",nil];
+        
+        
+        SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:requestString] parameters:params];
+        
+        //Authenticate request
+        [request setAccount:_currentAccount];
+        
+        //Actually perform the request
+        
+        
+        [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+            
+            
+            
+            //http status code 200 = "OK"
+            if(error == nil && [urlResponse statusCode] == 200)
+            {
+                
+                NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+                
+                NSString *name = [userData objectForKey:@"name"];
+                NSString *desc =[userData objectForKey:@"description"];
+                NSNumber *followers = [userData objectForKey:@"followers_count"];
+                NSNumber *friends = [userData objectForKey:@"followers_count"];
+                
+                //Pass date to display function
+                [self displayProfileData:name descString:desc numFollower:followers numFriend:friends];
+                
+            }
+        }];
+        
     }
+    
 }
 
 

@@ -5,6 +5,14 @@
 //  Created by Russell Gaspard on 6/5/14.
 //  Copyright (c) 2014 Russell Gaspard. All rights reserved.
 //
+/*
+ 
+ Russ Gaspard
+ Week 1
+ Mobile Development
+ MDF2 1406
+ 
+ */
 
 #import "ViewController.h"
 #import <Accounts/Accounts.h>
@@ -27,10 +35,13 @@
 - (void)viewDidLoad
 {
     
+    
+    alert = [[UIAlertView alloc] initWithTitle:@"Loading" message:@"Gathering Twitter Feed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
     //Create array to hold twitter post objects
     twitterPosts = [[NSMutableArray alloc] init];
     
-    
+    //fetch and display twitter data
     [self twitterRefresh];
     
     
@@ -51,9 +62,14 @@
 -(void)twitterRefresh
 {
     
+    //Display alert view
+    [alert show];
+    
     //Makes ure we start over with an empty array
     [twitterPosts removeAllObjects ];
     
+    //Load/reload table with no data
+    [mainTableView reloadData];
     
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     
@@ -92,9 +108,7 @@
                                 {
                                     //Consult twitter documentation to determine if data is Array or Dictionary
                                     NSArray *twitterFeed = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-                                    
-                                    
-                                   // NSLog(@"Twitter feed: %@", [twitterFeed description]);
+                            
                                     
                                     //Loop though twitter posts
                                     for (NSInteger i=0; i<[twitterFeed count]; i++)
@@ -105,7 +119,6 @@
                                         {
                                             [twitterPosts addObject:currentPostInfo];
                                             
-                                            //NSLog(@"TwitterPosts:%d",[twitterPosts count]);
                                         }
                                         
                                         //Reload the table after the data is loaded
@@ -115,7 +128,8 @@
                                         //May qualify as a hack - scrolling to top seems to assist initial data load
                                         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
                                         
-                                        [mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                                        [mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                                        
                                     }
                                 
                                 }
@@ -149,8 +163,6 @@
     NSString *posterString = [userInfoDictionary valueForKey:@"name"];
     NSString *tweetString = [postDictionary valueForKey:@"text"];
     
-    
-    NSLog(@"%@",posterString);
     
     //Create my custom object with my custom init method
     TwitterPostInfo *postInfo = [[TwitterPostInfo alloc] initWithPostInfo:nameString userDesc:descString poster:posterString text:tweetString dateTimeInfo:timeDateString];
@@ -190,6 +202,14 @@
     return [twitterPosts count];
 }
 
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
+        
+        //Dismiss alert view after last cell is loaded
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+    }
+}
 
         //Set each custom cell to reflect data from the same index of my tweet objects array
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -204,7 +224,6 @@
     }
     else
     {
-        NSLog(@"cell is nil");
     }
 
     return cell;

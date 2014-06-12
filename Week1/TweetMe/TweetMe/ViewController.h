@@ -5,6 +5,14 @@
 //  Created by Russell Gaspard on 6/5/14.
 //  Copyright (c) 2014 Russell Gaspard. All rights reserved.
 //
+/*
+ 
+ Russ Gaspard
+ Week 1
+ Mobile Development
+ MDF2 1406
+ 
+ */
 
 #import <UIKit/UIKit.h>
 #import "TwitterPostInfo.h"
@@ -24,6 +32,9 @@
     //Retain current account
     ACAccount *currentAccount;
     
+    //Create alert view for data load
+    UIAlertView *alert;
+    
     IBOutlet UITableView *mainTableView;    //Table view reference
 }
 
@@ -33,7 +44,6 @@
 
 
 -(TwitterPostInfo*) postInfoFromDictionary:(NSDictionary*)postDictionary;
-
 
 -(IBAction)onClick:(id)sender;
 
