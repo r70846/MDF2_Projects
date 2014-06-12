@@ -25,6 +25,7 @@
 		603F52EC19496EF900716A65 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603F52EB19496EF900716A65 /* Social.framework */; };
 		603F52F21949907300716A65 /* CustomCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 603F52F11949907300716A65 /* CustomCollectionCell.m */; };
 		603F52F51949916800716A65 /* FollowerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 603F52F41949916800716A65 /* FollowerInfo.m */; };
+		603F52F81949993F00716A65 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 603F52F71949993F00716A65 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		603F52F11949907300716A65 /* CustomCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionCell.m; sourceTree = "<group>"; };
 		603F52F31949916800716A65 /* FollowerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowerInfo.h; sourceTree = "<group>"; };
 		603F52F41949916800716A65 /* FollowerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowerInfo.m; sourceTree = "<group>"; };
+		603F52F61949993F00716A65 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		603F52F71949993F00716A65 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				603F52C319496CA600716A65 /* AppDelegate.h */,
 				603F52C419496CA600716A65 /* AppDelegate.m */,
 				603F52C619496CA600716A65 /* Main.storyboard */,
+				603F52F61949993F00716A65 /* DetailViewController.h */,
+				603F52F71949993F00716A65 /* DetailViewController.m */,
 				603F52F01949907300716A65 /* CustomCollectionCell.h */,
 				603F52F11949907300716A65 /* CustomCollectionCell.m */,
 				603F52C919496CA600716A65 /* ViewController.h */,
@@ -272,6 +277,7 @@
 				603F52C519496CA600716A65 /* AppDelegate.m in Sources */,
 				603F52F21949907300716A65 /* CustomCollectionCell.m in Sources */,
 				603F52C119496CA600716A65 /* main.m in Sources */,
+				603F52F81949993F00716A65 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

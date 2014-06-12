@@ -11,6 +11,7 @@
 #import <Social/Social.h>
 #import "FollowerInfo.h"
 #import "CustomCollectionCell.h"
+#import "DetailViewController.h"
 
 @interface ViewController ()
 
@@ -67,6 +68,27 @@
     return cell;
 }
 
+
+//Called when we go to the detail view
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    DetailViewController *detailViewController = segue.destinationViewController;
+        
+    if (detailViewController != nil)
+    {
+        //Cast the "sender" as a CollectionView Cell
+        UICollectionViewCell *cell = (UICollectionViewCell*)sender;
+        NSIndexPath *indexPath = [mainCollectionView indexPathForCell:cell];
+            
+        //Get FollowerInfo object from the array based on the item in the tableview we clicked on
+        FollowerInfo *currentFriend = [twitterFollowers objectAtIndex:indexPath.row];
+            
+        //Set the currentTweet property in detail view to the chosen one
+        detailViewController.currentFriend = currentFriend;
+    }
+
+}
 
 
 -(void)getFriendData
