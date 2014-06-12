@@ -26,6 +26,10 @@
 
 - (void)viewDidLoad
 {
+    
+    nameLabel.text = self.currentFriend.screenName;
+    imageView.image = self.currentFriend.avatarImage;
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
