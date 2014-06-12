@@ -5,6 +5,14 @@
 //  Created by Russell Gaspard on 6/12/14.
 //  Copyright (c) 2014 Russell Gaspard. All rights reserved.
 //
+/*
+ 
+ Russ Gaspard
+ Week 2
+ Mobile Development
+ MDF2 1406
+ 
+ */
 
 #import "ViewController.h"
 #import <Accounts/Accounts.h>
@@ -22,12 +30,19 @@
 - (void)viewDidLoad
 {
     
+    //Build alert view for user who declines to access Twitter
+    noConnection = [[UIAlertView alloc] initWithTitle:@"Connection Unavailable" message:@"Twitter Flock cannot access Twitter without Internet conncetion." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    //Build alert view for user who declines to access Twitter
+    accessDenied = [[UIAlertView alloc] initWithTitle:@"Access Denied" message:@"The Twitter Flock app cannot function without access to your Twitter acount" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    
+    
     //Create array to hold twitter friends (FollowerInfo objects)
     twitterFollowers = [[NSMutableArray alloc] init];
     
-    
+    //Run API call and load data
     [self getFriendData];
-    
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -50,18 +65,13 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    //UICollectionViewCell  *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"idCell" forIndexPath:indexPath];
+    //Build custom cell
     CustomCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"idCell" forIndexPath:indexPath];
     
     if(cell != nil)
     {
-        
-        //
-        //int albumIndex = (indexPath.row % 5) + 1;
-        //NSString *imageName = [NSString stringWithFormat:@"img/cover%d.jpg", albumIndex];
-        //[cell resetWithLabel:@"Album" cellImage:[UIImage imageNamed:imageName]];
+        //Populate custom cell based on associated FollowerInfo object
         FollowerInfo *friend = [twitterFollowers objectAtIndex:indexPath.row];
-        
         [cell resetWithLabel:friend.screenName cellImage:friend.avatarImage];
         
     }
@@ -87,21 +97,11 @@
         //Set the currentTweet property in detail view to the chosen one
         detailViewController.currentFriend = currentFriend;
     }
-
 }
 
 
 -(void)getFriendData
 {
-    
-    //Display alert view
-    //[alert show];
-    
-    //Makes ure we start over with an empty array
-    //[twitterPosts removeAllObjects ];
-    
-    //Load/reload table with no data
-    //[mainTableView reloadData];
     
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     
@@ -123,12 +123,7 @@
                         if(currentAccount != nil)
                         {
                             
-                            //Twitter API call to retrieve timeline
-                            //NSString *requestString = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
-                            
-                            
-                            //NSString *requestString = @"https://api.twitter.com/1.1/friends/list.json cursor=-1&skip_status=true&include_user_entities=false";
-                            
+                            //Twitter API call to retrieve friend list
                             NSString *requestString = @"https://api.twitter.com/1.1/friends/list.json";
                             
                             
@@ -146,23 +141,11 @@
                                 //http status code 200 = "OK"
                                 if(error == nil && [urlResponse statusCode] == 200)
                                 {
-                                    //Consult twitter documentation to determine if data is Array or Dictionary
-                                   // NSArray *friendData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-                                    
                                     //Dictionary Object to hold entire data return Twitter JSON
                                     NSDictionary *returnData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                                     
-                                    //NSLog(@"Friend Data:%@",[returnData description]);
-                                    
                                     //Array to hold only the "users" data from Twitter JSON return
                                     NSArray *friendsArray =  [returnData objectForKey:@"users"];
-                                    
-                                    //NSLog(@"Friends Array:%@",[friendsArray description]);
-                                    
-                                    //Dictionary Object to hold data on each user from Twitter JSON return
-                                    //NSDictionary *friendData = [friendsArray objectAtIndex:0];
-                                    
-                                    //NSLog(@"Friends Array:%@",[friendData description]);
                                     
                                     //Loop though friends
                                     for (NSInteger i=0; i<[friendsArray count]; i++)
@@ -184,35 +167,20 @@
                                             NSURL *imageURL = [NSURL URLWithString:imageString];
                                             NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
                                             currentFollower.avatarImage = [UIImage imageWithData:imageData];
-
-                                            
-                                            
-                                            //Pass image from the URL in twitter's JSON data to my custom object
-                                            //NSString *imageURL = [friendData objectForKey:@"profile_image_url"];
-                                            //currentFollower.avatarImage = [UIImage imageNamed:imageURL];
                                             
                                             //Add the new FollowerInfo object to my array
                                             [twitterFollowers addObject:currentFollower];
                                         }
-
                                     }
-                                    
-                                    
                                     //Reload the collection view after the data is loaded
                                     [mainCollectionView reloadData];
-                                    
-                                    
-                                    for (NSInteger x=0; x<[twitterFollowers count]; x++)
-                                    {
-                                        
-                                        FollowerInfo *friend = [twitterFollowers objectAtIndex:x];
-                                        
-                                        NSLog(@"twitterFollower %d = %@", x + 1, friend.screenName);
-                                    }
                                 }
                                 else
                                 {
-                                    NSLog(@"Error:%@", [error description]);
+                                    //Display Alert View for connection error
+                                    [noConnection show];
+                                    
+                                    //NSLog(@"Error:%@", [error description]);
                                 }
                             }];
                             
@@ -221,7 +189,8 @@
                 }
                 else
                 {
-                    //The user says no
+                    //The user says no - display associate Alert View
+                    [accessDenied show];
                 }
             }];
         }
