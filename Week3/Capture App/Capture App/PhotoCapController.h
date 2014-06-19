@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoCapController : UIViewController
+@interface PhotoCapController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+{
+    
+    IBOutlet UIImageView *photoImageView;
+    
+    IBOutlet UIImageView *editedImageView;
+    
+}
+
+
+- (void)saveImages;
+
+@property (nonatomic, strong)UIImage *originalPhoto;
+@property (nonatomic, strong)UIImage *editedPhoto;
 
 @end

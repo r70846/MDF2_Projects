@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     
+    
+    NSString *destination;
+    UIImage *capturedImage;
+    UIImage *editedImage;
 }
 
 
@@ -18,5 +22,7 @@
 
 -(IBAction)done:(UIStoryboardSegue*)segue;
 
+
+-(void)capturePhoto;
 
 @end

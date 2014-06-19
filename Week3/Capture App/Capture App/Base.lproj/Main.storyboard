@@ -23,6 +23,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="onClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XeP-Qc-1Lz"/>
                                     <segue destination="7ed-pJ-vXk" kind="modal" identifier="segueToPhotoCap" id="HzY-eG-C7u"/>
                                 </connections>
                             </button>
@@ -34,6 +35,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="onClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vwQ-Lz-Jvz"/>
                                     <segue destination="KTl-59-o1i" kind="modal" identifier="segueToVideoCap" id="55B-V8-4mD"/>
                                 </connections>
                             </button>
@@ -45,6 +47,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="onClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q4o-K2-mc0"/>
                                     <segue destination="cir-RD-WI0" kind="modal" identifier="segueToAlbum" id="M3E-g5-Doo"/>
                                 </connections>
                             </button>
@@ -145,7 +148,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image Capture" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Uv-yw-egd">
-                                <rect key="frame" x="100" y="100" width="350" height="50"/>
+                                <rect key="frame" x="230" y="33" width="350" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="highlightedColor"/>
@@ -161,9 +164,21 @@
                                     <segue destination="HmM-pX-ky8" kind="unwind" unwindAction="done:" id="SqO-qG-C3R"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b5D-sB-M54">
+                                <rect key="frame" x="184" y="91" width="400" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WG0-A9-F0U">
+                                <rect key="frame" x="184" y="519" width="400" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="editedImageView" destination="WG0-A9-F0U" id="cxp-bn-PWe"/>
+                        <outlet property="photoImageView" destination="b5D-sB-M54" id="RTG-b1-h5Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYO-Ny-dOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HmM-pX-ky8" userLabel="Exit" sceneMemberID="exit"/>

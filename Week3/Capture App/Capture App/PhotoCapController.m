@@ -7,12 +7,15 @@
 //
 
 #import "PhotoCapController.h"
+//#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface PhotoCapController ()
 
 @end
 
 @implementation PhotoCapController
+@synthesize originalPhoto, editedPhoto;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,14 +28,45 @@
 
 - (void)viewDidLoad
 {
+
+    photoImageView.image = self.originalPhoto;
+    editedImageView.image = self.editedPhoto;
+    
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+
+- (void)saveImages
+{
+    //Save to my photo album programmtically
+    
+    UIImageWriteToSavedPhotosAlbum(self.originalPhoto, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    UIImageWriteToSavedPhotosAlbum(self.editedPhoto, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+
+}
+
+
+//Callback for photo
+- (void)image:(UIImage *) image didFinishSavingWithError:(NSError *) error contextInfo:(void *) contextInfo
+{
+    //Callback: Image save to photo album was suvccessful or something went wrong..
 }
 
 @end
