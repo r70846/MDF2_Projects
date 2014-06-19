@@ -12,13 +12,20 @@
 {
     
     IBOutlet UIImageView *photoImageView;
-    
     IBOutlet UIImageView *editedImageView;
+    
+    IBOutlet UIButton *backButton;
+    IBOutlet UIButton *saveButton;
+    IBOutlet UILabel *messageLabel;
+    
+    
+    NSInteger attemptedSaves;
+    NSInteger errorCount;
     
 }
 
 
-- (void)saveImages;
+- (IBAction)saveImages:(id)sender;
 
 @property (nonatomic, strong)UIImage *originalPhoto;
 @property (nonatomic, strong)UIImage *editedPhoto;

@@ -32,7 +32,6 @@
     photoImageView.image = self.originalPhoto;
     editedImageView.image = self.editedPhoto;
     
-    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -40,6 +39,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
+    //Initialize my counter variables
+    attemptedSaves = 0;
+    errorCount = 0;
     
     [super viewWillAppear:animated];
 }
@@ -53,7 +56,7 @@
 
 
 
-- (void)saveImages
+- (IBAction)saveImages:(id)sender
 {
     //Save to my photo album programmtically
     
@@ -66,7 +69,33 @@
 //Callback for photo
 - (void)image:(UIImage *) image didFinishSavingWithError:(NSError *) error contextInfo:(void *) contextInfo
 {
-    //Callback: Image save to photo album was suvccessful or something went wrong..
+    
+    attemptedSaves++;
+    
+    if(attemptedSaves == 2)
+    {
+    
+        //Callback: Image save to photo album was suvccessful or something went wrong..
+        if(error == nil && errorCount == 0)
+        {
+            //nothing went wrong
+            messageLabel.text = @"Photos Saved";
+            messageLabel.hidden = false;
+            saveButton.enabled = false;
+            [backButton setTitle:@"Back" forState:normal];
+            
+        }
+        else
+        {
+            //something went wrong
+            messageLabel.text = @"Error: Not Saved";
+            messageLabel.hidden = false;
+        }
+    }
+    else
+    {
+        if(error != nil){errorCount++;};
+    }
 }
 
 @end
