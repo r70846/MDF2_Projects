@@ -65,7 +65,7 @@
     }
     else //Photo Album
     {
-
+        [self displayAlbum];
     }
 
 }
@@ -108,6 +108,27 @@
         
     }
 }
+
+-(void)displayAlbum
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    if(picker != nil)
+    {
+        //Informs where to look for the photos
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        
+        picker.delegate = self; //must implement delegate in my header
+        
+        //Turn editing on
+        picker.allowsEditing = false;
+        
+        //Show the image picker controller
+        [self presentViewController:picker animated:true completion:nil];
+        
+    }
+}
+
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -183,33 +204,7 @@
         VideoCapController *videoCapController = segue.destinationViewController;
         videoCapController.moviePath = videoPath;
      }
-         /*
-    else if(btn.tag == 1) //Video Cap
-    {
-        [self performSegueWithIdentifier:@"segueToVideoCap" sender:sender];
-    }
-    else //Photo Album
-    {
-        [self performSegueWithIdentifier:@"segueToAlbum" sender:sender];
-    }
-    */
-    
-    /*
-    SelectionViewController *selectionViewController = segue.destinationViewController;
-    
-    if (selectionViewController != nil)
-    {
-        
-        //Cast the "sender" as a TableView Cell
-        //UITableViewCell *cell = (UITableViewCell*)sender;
-        //NSIndexPath *indexPath = [calTableView indexPathForCell:cell];
-        
-        
-        //selectionViewController.dataString = [gigWeekArray objectAtIndex:indexPath.row];
-    }
-     
-     */
-}
+ }
 
 -(IBAction)done:(UIStoryboardSegue*)segue
 {

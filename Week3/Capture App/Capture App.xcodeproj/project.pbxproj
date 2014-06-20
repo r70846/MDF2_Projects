@@ -23,7 +23,6 @@
 		608C722919534D4700851FA8 /* Capture_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 608C722819534D4700851FA8 /* Capture_AppTests.m */; };
 		608C723419535A3600851FA8 /* PhotoCapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 608C723319535A3600851FA8 /* PhotoCapController.m */; };
 		608C723719535A4A00851FA8 /* VideoCapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 608C723619535A4A00851FA8 /* VideoCapController.m */; };
-		608C723A19535A5A00851FA8 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 608C723919535A5A00851FA8 /* AlbumViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +59,6 @@
 		608C723319535A3600851FA8 /* PhotoCapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCapController.m; sourceTree = "<group>"; };
 		608C723519535A4A00851FA8 /* VideoCapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCapController.h; sourceTree = "<group>"; };
 		608C723619535A4A00851FA8 /* VideoCapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCapController.m; sourceTree = "<group>"; };
-		608C723819535A5A00851FA8 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
-		608C723919535A5A00851FA8 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +127,6 @@
 				608C723319535A3600851FA8 /* PhotoCapController.m */,
 				608C723519535A4A00851FA8 /* VideoCapController.h */,
 				608C723619535A4A00851FA8 /* VideoCapController.m */,
-				608C723819535A5A00851FA8 /* AlbumViewController.h */,
-				608C723919535A5A00851FA8 /* AlbumViewController.m */,
 				608C721519534D4700851FA8 /* Images.xcassets */,
 				608C720419534D4700851FA8 /* Supporting Files */,
 			);
@@ -266,7 +261,6 @@
 			files = (
 				608C721419534D4700851FA8 /* ViewController.m in Sources */,
 				608C723419535A3600851FA8 /* PhotoCapController.m in Sources */,
-				608C723A19535A5A00851FA8 /* AlbumViewController.m in Sources */,
 				608C720E19534D4700851FA8 /* AppDelegate.m in Sources */,
 				608C723719535A4A00851FA8 /* VideoCapController.m in Sources */,
 				608C720A19534D4700851FA8 /* main.m in Sources */,
@@ -480,6 +474,7 @@
 				608C722E19534D4700851FA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		608C722F19534D4700851FA8 /* Build configuration list for PBXNativeTarget "Capture AppTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +483,7 @@
 				608C723119534D4700851FA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -35,4 +35,8 @@
 
 -(void)capturePhoto;
 
+-(void)captureVideo;
+
+-(void)displayAlbum;
+
 @end
