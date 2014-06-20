@@ -34,10 +34,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     
-    //Track navigation - assign destination to "home"
-    
+    //Track navigation - designate home screen as "home"
     destination = @"home";
-    
     [super viewWillAppear:animated];
     
 }
@@ -55,21 +53,22 @@
     //Cast the "sender" as a Button
     UIButton *btn = (UIButton*)sender;
     
-    if(btn.tag == 0) //Photo Capture
+    if(btn.tag == 0) //Photo Capture Clicked
     {
         [self capturePhoto];
     }
-    else if(btn.tag == 1) //Video Cap
+    else if(btn.tag == 1) //Video Capture Clicked
     {
         [self captureVideo];
     }
-    else //Photo Album
+    else //View Album Clicked
     {
         [self displayAlbum];
     }
 
 }
 
+//function for photo capture
 -(void)capturePhoto
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -89,10 +88,12 @@
     }
 }
 
-
+//function for video capture
 -(void)captureVideo
 {
+    //Create picker
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    
     if(picker != nil)
     {
         //Informs where to look for the photos
@@ -109,9 +110,12 @@
     }
 }
 
+//function to view album
 -(void)displayAlbum
 {
+    //Create picker
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    
     if(picker != nil)
     {
         //Informs where to look for the photos
@@ -133,17 +137,18 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    
+    //Query dictionary object to determine "photo" or "video" type
     NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];     //"public.image" or "public.movie"
     
-
+    //Process Photo Type
     if([mediaType isEqualToString:@"public.image"])
     {
+        //Get image
         capturedImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         
         if(capturedImage != nil)
         {
-            
+            //Dismiss picker, use code block to assign destination and run segue
             [picker dismissViewControllerAnimated:true completion:^(void){
                 destination = @"photocap";
                 [self performSegueWithIdentifier:@"segueToPhotoCap" sender:nil];
@@ -151,9 +156,11 @@
             }];
             
         }
-        
+        //Get edited image
         editedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
     }
+    
+    //Process Video Type
     else if([mediaType isEqualToString:@"public.movie"])
     {
         //Save my video
@@ -162,11 +169,10 @@
         
         if(pathURL != nil)
         {
-            
+            //Dismiss picker, use code block to assign destination and run segue
             [picker dismissViewControllerAnimated:true completion:^(void){
                 destination = @"videocap";
                 [self performSegueWithIdentifier:@"segueToVideoCap" sender:nil];
-                
             }];
             
         }
@@ -176,6 +182,8 @@
     
 }
 
+//Only perform segue if my "destination" variable matches segue destination...
+//Segues were drawn from buttons in storyboard but this prevents them from firing on initial button click
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if ([destination  isEqual: @"photocap"] && [identifier isEqualToString:@"segueToPhotoCap"]) {
@@ -188,17 +196,18 @@
 }
 
 
-//Called if we go to a detail view
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
-    
+    //Pass my image data into properties of photo ViewController
     if([destination isEqualToString:@"photocap"]) //Photo Cap
     {
         PhotoCapController *photoCapController = segue.destinationViewController;
         photoCapController.originalPhoto = capturedImage;
         photoCapController.editedPhoto = editedImage;
     }
+    
+    //Pass my video data into properties of video ViewController
      else if([destination isEqualToString:@"videocap"])
      {
         VideoCapController *videoCapController = segue.destinationViewController;
@@ -206,6 +215,7 @@
      }
  }
 
+//Target for unwind segues
 -(IBAction)done:(UIStoryboardSegue*)segue
 {
     

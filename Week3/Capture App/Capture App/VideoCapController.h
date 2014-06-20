@@ -18,6 +18,8 @@
 
 @interface VideoCapController : UIViewController
 {
+    
+    //Outlets for buttons and user messages
     IBOutlet UIButton *backButton;
     IBOutlet UIButton *saveButton;
     
@@ -27,9 +29,10 @@
     
 }
 
+//declare function to save video
 - (IBAction)saveVideo:(id)sender;
 
-
+//properties to recieve and hold video URL string
 @property (nonatomic, strong)NSString *moviePath;
 
 @end

@@ -23,6 +23,8 @@
 		608C722919534D4700851FA8 /* Capture_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 608C722819534D4700851FA8 /* Capture_AppTests.m */; };
 		608C723419535A3600851FA8 /* PhotoCapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 608C723319535A3600851FA8 /* PhotoCapController.m */; };
 		608C723719535A4A00851FA8 /* VideoCapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 608C723619535A4A00851FA8 /* VideoCapController.m */; };
+		608C72421953D99B00851FA8 /* photo200.png in Resources */ = {isa = PBXBuildFile; fileRef = 608C72411953D99B00851FA8 /* photo200.png */; };
+		608C72441953D9A800851FA8 /* video200.png in Resources */ = {isa = PBXBuildFile; fileRef = 608C72431953D9A800851FA8 /* video200.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		608C723319535A3600851FA8 /* PhotoCapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCapController.m; sourceTree = "<group>"; };
 		608C723519535A4A00851FA8 /* VideoCapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCapController.h; sourceTree = "<group>"; };
 		608C723619535A4A00851FA8 /* VideoCapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCapController.m; sourceTree = "<group>"; };
+		608C72411953D99B00851FA8 /* photo200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo200.png; sourceTree = "<group>"; };
+		608C72431953D9A800851FA8 /* video200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video200.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 		608C720319534D4700851FA8 /* Capture App */ = {
 			isa = PBXGroup;
 			children = (
+				608C72431953D9A800851FA8 /* video200.png */,
+				608C72411953D99B00851FA8 /* photo200.png */,
 				608C720C19534D4700851FA8 /* AppDelegate.h */,
 				608C720D19534D4700851FA8 /* AppDelegate.m */,
 				608C720F19534D4700851FA8 /* Main.storyboard */,
@@ -241,6 +247,8 @@
 				608C721619534D4700851FA8 /* Images.xcassets in Resources */,
 				608C720819534D4700851FA8 /* InfoPlist.strings in Resources */,
 				608C721119534D4700851FA8 /* Main.storyboard in Resources */,
+				608C72441953D9A800851FA8 /* video200.png in Resources */,
+				608C72421953D99B00851FA8 /* photo200.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

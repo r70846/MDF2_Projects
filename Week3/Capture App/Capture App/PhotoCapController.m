@@ -66,7 +66,6 @@
 - (IBAction)saveImages:(id)sender
 {
     //Save to my photo album programmtically
-    
     UIImageWriteToSavedPhotosAlbum(self.originalPhoto, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     UIImageWriteToSavedPhotosAlbum(self.editedPhoto, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 
@@ -76,7 +75,7 @@
 //Callback for photo
 - (void)image:(UIImage *) image didFinishSavingWithError:(NSError *) error contextInfo:(void *) contextInfo
 {
-    
+    //iterate save attempts - this should equal two before we take action due to "original" and "edited"
     attemptedSaves++;
     
     if(attemptedSaves == 2)
@@ -97,10 +96,14 @@
             //something went wrong
             messageLabel.text = @"Error: Not Saved";
             messageLabel.hidden = false;
+            
+            //Start count over in case user trys again to save
+            errorCount = 0;
+            attemptedSaves =0;
         }
     }
     else
-    {
+    {   //add an errors to my count
         if(error != nil){errorCount++;};
     }
 }

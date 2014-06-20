@@ -57,12 +57,12 @@
     //Callback: Image save to photo album was suv=ccessful or something went wrong..
     if(error == nil)
     {
-        //nothing went wrong
-        
+        //nothing went wrong - save message
         instructionLabel.text = @"Click Back for Home Screen";
-        
         messageLabel.text = @"Video Saved";
         messageLabel.hidden = false;
+        
+        //adjust button titles/states
         saveButton.enabled = false;
         [backButton setTitle:@"Back" forState:normal];
     }
