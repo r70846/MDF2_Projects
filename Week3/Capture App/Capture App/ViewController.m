@@ -5,9 +5,19 @@
 //  Created by Russell Gaspard on 6/19/14.
 //  Copyright (c) 2014 Russell Gaspard. All rights reserved.
 //
+/*
+ 
+ Russ Gaspard
+ Week 3
+ Mobile Development
+ MDF2 1406
+ 
+ */
 
 #import "ViewController.h"
 #import "PhotoCapController.h"
+#import "VideoCapController.h"
+#import<MobileCoreServices/MobileCoreServices.h>
 
 @interface ViewController ()
 
@@ -48,10 +58,14 @@
     if(btn.tag == 0) //Photo Capture
     {
         [self capturePhoto];
-        
-        
-        
-        //[self performSegueWithIdentifier:@"segueToPhotoCap" sender:sender];
+    }
+    else if(btn.tag == 1) //Video Cap
+    {
+        [self captureVideo];
+    }
+    else //Photo Album
+    {
+
     }
 
 }
@@ -63,9 +77,6 @@
     {
         //Informs where to look for the photos
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        //Must #import<MobileCoreServices/MobileCoreServices.h> and add line below to enable video..
-        //picker.mediaTypes = @[(NSString*)kUTTypeMovie];
         
         picker.delegate = self; //must implement delegate in my header
         
@@ -79,44 +90,77 @@
 }
 
 
+-(void)captureVideo
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    if(picker != nil)
+    {
+        //Informs where to look for the photos
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        //Enable video..
+        picker.mediaTypes = @[(NSString*)kUTTypeMovie];
+        
+        picker.delegate = self; //must implement delegate in my header
+        
+        //Show the (video)  controller
+        [self presentViewController:picker animated:true completion:nil];
+        
+    }
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    capturedImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
-    if(capturedImage != nil)
+    NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];     //"public.image" or "public.movie"
+    
+
+    if([mediaType isEqualToString:@"public.image"])
     {
-
-        [picker dismissViewControllerAnimated:true completion:^(void){
-            destination = @"photocap";
-            [self performSegueWithIdentifier:@"segueToPhotoCap" sender:nil];
-
-        }];
+        capturedImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         
+        if(capturedImage != nil)
+        {
+            
+            [picker dismissViewControllerAnimated:true completion:^(void){
+                destination = @"photocap";
+                [self performSegueWithIdentifier:@"segueToPhotoCap" sender:nil];
+                
+            }];
+            
+        }
+        
+        editedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+    }
+    else if([mediaType isEqualToString:@"public.movie"])
+    {
+        //Save my video
+        NSURL *pathURL = [info objectForKey:@"UIImagePickerControllerMediaURL"];
+        videoPath = [pathURL path];
+        
+        if(pathURL != nil)
+        {
+            
+            [picker dismissViewControllerAnimated:true completion:^(void){
+                destination = @"videocap";
+                [self performSegueWithIdentifier:@"segueToVideoCap" sender:nil];
+                
+            }];
+            
+        }
     }
     
-    editedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
- 
-    /*
-    if(editedImage != nil)
-    {
-       // editedImageView.image = editedImage;
-        
-        NSLog(@"made it here!");
-    }
-    */
     
-    //Save to my photo album programmtically
     
-    //UIImageWriteToSavedPhotosAlbum(selectedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-    //UIImageWriteToSavedPhotosAlbum(editedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-    
-    //NSLog(@"info=%@",info);
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if ([destination  isEqual: @"photocap"] && [identifier isEqualToString:@"segueToPhotoCap"]) {
+        return true;
+    }
+    if ([destination  isEqual: @"videocap"] && [identifier isEqualToString:@"segueToVideoCap"]) {
         return true;
     }
     return false;
@@ -133,9 +177,12 @@
         PhotoCapController *photoCapController = segue.destinationViewController;
         photoCapController.originalPhoto = capturedImage;
         photoCapController.editedPhoto = editedImage;
-
     }
-     
+     else if([destination isEqualToString:@"videocap"])
+     {
+        VideoCapController *videoCapController = segue.destinationViewController;
+        videoCapController.moviePath = videoPath;
+     }
          /*
     else if(btn.tag == 1) //Video Cap
     {

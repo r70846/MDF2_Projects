@@ -5,9 +5,16 @@
 //  Created by Russell Gaspard on 6/19/14.
 //  Copyright (c) 2014 Russell Gaspard. All rights reserved.
 //
+/*
+ 
+ Russ Gaspard
+ Week 3
+ Mobile Development
+ MDF2 1406
+ 
+ */
 
 #import "PhotoCapController.h"
-//#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface PhotoCapController ()
 
