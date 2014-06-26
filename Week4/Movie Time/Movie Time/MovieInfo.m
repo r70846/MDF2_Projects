@@ -17,5 +17,27 @@
 #import "MovieInfo.h"
 
 @implementation MovieInfo
+@synthesize title, image, showtimes, trailerURL, citation, reference;
+
+
+//My custom init method
+-(id)initWithData:(NSString*)movieTitle movieImage:(UIImage*)movieImage movieShowtimes:(NSArray*)movieShowtimes preview:(NSString*)preview movieCitation:(NSString*)movieCitation
+{
+    
+    self = [super init];
+    if (self) {
+        // Initialization code
+        title = movieTitle;
+        image = movieImage;
+        showtimes = movieShowtimes;
+        trailerURL = preview;
+        citation = movieCitation;
+    }
+
+    return self;
+    
+}
+
+
 
 @end

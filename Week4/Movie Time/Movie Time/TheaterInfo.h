@@ -15,7 +15,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "MovieInfo.h"
 
 @interface TheaterInfo : NSObject
+{
+    
+}
+
+@property (nonatomic, strong)NSString *name;
+@property (nonatomic, strong)NSString *location;
+@property (nonatomic, strong)UIImage *image;
+@property (nonatomic, strong)NSMutableArray *movies;
 
 @end

@@ -17,5 +17,7 @@
 #import "TheaterInfo.h"
 
 @implementation TheaterInfo
+@synthesize name, location, image, movies;
+
 
 @end

@@ -15,7 +15,17 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "MovieInfo.h"
 
 @interface ViewController : UIViewController
+{
+    
+    NSMutableArray *movieList;
+    
+    
+    MovieInfo *currentMovie;
+}
+
+
 
 @end
