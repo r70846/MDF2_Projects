@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6042E0BD195DCFA0006D3C91 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 6042E0BC195DCFA0006D3C91 /* img */; };
-		6042E0BF195DD1F1006D3C91 /* credits.png in Resources */ = {isa = PBXBuildFile; fileRef = 6042E0BE195DD1F1006D3C91 /* credits.png */; };
-		6042E0C3195DD422006D3C91 /* credits3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6042E0C2195DD422006D3C91 /* credits3.png */; };
 		6042E0C6195DD54A006D3C91 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6042E0C5195DD54A006D3C91 /* InfoView.m */; };
 		6059D016195C862500DED7C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6059D015195C862500DED7C5 /* Foundation.framework */; };
 		6059D018195C862500DED7C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6059D017195C862500DED7C5 /* CoreGraphics.framework */; };
@@ -46,8 +44,6 @@
 
 /* Begin PBXFileReference section */
 		6042E0BC195DCFA0006D3C91 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
-		6042E0BE195DD1F1006D3C91 /* credits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credits.png; sourceTree = "<group>"; };
-		6042E0C2195DD422006D3C91 /* credits3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credits3.png; sourceTree = "<group>"; };
 		6042E0C4195DD54A006D3C91 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
 		6042E0C5195DD54A006D3C91 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
 		6059D012195C862500DED7C5 /* Movie Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,8 +139,6 @@
 		6059D01B195C862500DED7C5 /* Movie Time */ = {
 			isa = PBXGroup;
 			children = (
-				6042E0C2195DD422006D3C91 /* credits3.png */,
-				6042E0BE195DD1F1006D3C91 /* credits.png */,
 				6059D024195C862500DED7C5 /* AppDelegate.h */,
 				6059D025195C862500DED7C5 /* AppDelegate.m */,
 				6059D027195C862500DED7C5 /* Main.storyboard */,
@@ -278,8 +272,6 @@
 				6059D02E195C862600DED7C5 /* Images.xcassets in Resources */,
 				6059D020195C862500DED7C5 /* InfoPlist.strings in Resources */,
 				6059D029195C862500DED7C5 /* Main.storyboard in Resources */,
-				6042E0BF195DD1F1006D3C91 /* credits.png in Resources */,
-				6042E0C3195DD422006D3C91 /* credits3.png in Resources */,
 				6059D062195D1B7700DED7C5 /* vid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
