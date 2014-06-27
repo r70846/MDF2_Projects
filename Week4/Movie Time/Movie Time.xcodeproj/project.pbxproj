@@ -26,6 +26,7 @@
 		6059D052195C86E700DED7C5 /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6059D051195C86E700DED7C5 /* MovieInfo.m */; };
 		6059D055195C870C00DED7C5 /* TheaterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6059D054195C870C00DED7C5 /* TheaterInfo.m */; };
 		6059D058195CFE7600DED7C5 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6059D057195CFE7600DED7C5 /* CustomTableCell.m */; };
+		6059D05E195D0CF600DED7C5 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 6059D05D195D0CF600DED7C5 /* img */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		6059D054195C870C00DED7C5 /* TheaterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheaterInfo.m; sourceTree = "<group>"; };
 		6059D056195CFE7600DED7C5 /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
 		6059D057195CFE7600DED7C5 /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
+		6059D05D195D0CF600DED7C5 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		6059D01B195C862500DED7C5 /* Movie Time */ = {
 			isa = PBXGroup;
 			children = (
+				6059D05D195D0CF600DED7C5 /* img */,
 				6059D024195C862500DED7C5 /* AppDelegate.h */,
 				6059D025195C862500DED7C5 /* AppDelegate.m */,
 				6059D027195C862500DED7C5 /* Main.storyboard */,
@@ -253,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6059D05E195D0CF600DED7C5 /* img in Resources */,
 				6059D02E195C862600DED7C5 /* Images.xcassets in Resources */,
 				6059D020195C862500DED7C5 /* InfoPlist.strings in Resources */,
 				6059D029195C862500DED7C5 /* Main.storyboard in Resources */,

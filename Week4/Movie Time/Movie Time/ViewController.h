@@ -23,7 +23,6 @@
     
     
     NSMutableArray *theaterList;
-
 }
 
 

@@ -14,5 +14,9 @@
 }
 
 @property (nonatomic, strong)IBOutlet UILabel *cellLabel;
+@property (nonatomic, strong)IBOutlet UILabel *timeOne;
+@property (nonatomic, strong)IBOutlet UILabel *timeTwo;
+@property (nonatomic, strong)IBOutlet UILabel *timeThree;
+@property (nonatomic, strong)IBOutlet UIImageView *movieImage;
 
 @end

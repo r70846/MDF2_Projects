@@ -48,7 +48,7 @@
     //Build new theater
     currentTheater.name = @"Aloma Cinema Chill";
     currentTheater.location = @"2155 Aloma Ave, Winter Park";
-    //currentTheater.image =
+    currentTheater.image = [UIImage imageNamed:@"img/aloma50.png"];
     
     
     currentMovie = [[MovieInfo alloc] initWithData:@"Any Which Way You Can"
@@ -105,6 +105,7 @@
     //Build new theater
     currentTheater.name = @"Inzian Theater";
     currentTheater.location = @"1300 S Orlando Ave, Maitland";
+    currentTheater.image = [UIImage imageNamed:@"img/Inzian50.png"];
     
     currentMovie = [[MovieInfo alloc] initWithData:@"Beatlejuice"
                                         movieImage:nil
@@ -152,7 +153,8 @@
     //Build new theater
     currentTheater.name = @"Stardust Coffee & Video";
     currentTheater.location = @"1842 Winter Park Rd, Orlando";
-
+    currentTheater.image = [UIImage imageNamed:@"img/stardust50.png"];
+    
     currentMovie = [[MovieInfo alloc] initWithData:@"E.T. the Extra-Terrestrial"
                                         movieImage:nil
                                     movieShowtimes:@[@"6:50 PM", @"9:05 PM", @"10:20 PM"]
@@ -242,6 +244,62 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+/*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+// fixed font style. use custom view (UILabel) if you want something different
+{
+    
+    TheaterInfo *currentTheater = [theaterList objectAtIndex:section];
+    
+    return currentTheater.name;
+}
+*/
+
+//Set the height of section headers
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    //return float value for how tall header section should be
+    return 60.0f;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *headerView = (UITableViewHeaderFooterView*) view;
+    if(headerView != nil)
+    {
+        //Get access to data for each section
+        TheaterInfo *currentTheater = [theaterList objectAtIndex:section];
+        
+        //Setup my own custom section titles
+        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(70.0f,5.0f,250.0f,25.0f)];
+        
+        nameLabel.text = currentTheater.name;
+        //nameLabel.backgroundColor = [UIColor redColor];
+        
+        //Add Name Label for Theater
+        [headerView.contentView addSubview:nameLabel];
+        
+        //Create a second label for each header
+        UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(70.0f,31.0f,250.0f,20.0f)];
+        
+        locationLabel.text = currentTheater.location;
+        //locationLabel.backgroundColor = [UIColor yellowColor];
+        
+        [headerView.contentView addSubview:locationLabel];
+        
+        //Create an imageview for my header
+        UIImageView *headerImage = [[UIImageView alloc] initWithFrame:CGRectMake(10.0f,5.0f,50.0f,50.0f)];
+        
+        
+        headerImage.image = currentTheater.image;
+        
+        [headerView.contentView addSubview:headerImage];
+    }
+    
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     TheaterInfo *currentTheater = [theaterList objectAtIndex:section];
@@ -259,6 +317,11 @@
     {
         MovieInfo *currentMovie = [currentTheater.movies objectAtIndex:indexPath.row];
         cell.cellLabel.text = currentMovie.title;
+        NSArray *times = [currentMovie.showtimes objectAtIndex:0];
+        //cell.timeOne.text = [currentMovie.showtimes objectAtIndex:0];
+        //cell.timeTwo.text = [currentMovie.showtimes objectAtIndex:1];
+        //cell.timeThree.text = [currentMovie.showtimes objectAtIndex:2];
+        
         
     }
     return cell;
