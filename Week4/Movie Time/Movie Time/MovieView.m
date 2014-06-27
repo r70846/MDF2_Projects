@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad
 {
-    
+    //Show title of the movie chosen movie
     titleLabel.text = _currentMovie.title;
     
     [super viewDidLoad];
@@ -61,6 +61,7 @@
 -(IBAction)onPlay:(id)sender
 {
     
+    //Create a string representing the file path to my video file
     NSString *filePath = [[NSBundle mainBundle] pathForResource:_currentMovie.trailerURL ofType:@"mp4" inDirectory:@"vid"];
     
     //use URL because the Movie Player is designed to load files locally or remotely
@@ -71,17 +72,18 @@
     
     if(moviePlayer != nil)
     {
-        
+        //Add player object to my "UIView" movie view
         [movieView addSubview:moviePlayer.view];
         
         
         //setup the moviePlayer size to the same size as the movie view
         moviePlayer.view.frame = CGRectMake(0.0f, 0.0f, movieView.frame.size.width, movieView.frame.size.height);
         
+        //set some parameters
         moviePlayer.fullscreen = false;
         moviePlayer.controlStyle = MPMovieControlStyleNone;
-        //moviePlayer.repeatMode = MPMovieRepeatModeOne;
-        
+     
+        //finally we play the video!
         [moviePlayer play];
     }
 }
@@ -92,6 +94,7 @@
 {
     if(moviePlayer != nil)
     {
+        //Stop playing the video
         [moviePlayer stop];
     }
 }

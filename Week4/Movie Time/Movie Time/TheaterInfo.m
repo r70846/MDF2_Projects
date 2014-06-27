@@ -25,6 +25,8 @@
     
     self = [super init];
     if (self) {
+        
+        //alloc and init my mutable array property - prepare to load movies
         movies = [[NSMutableArray alloc] init];
     }
     

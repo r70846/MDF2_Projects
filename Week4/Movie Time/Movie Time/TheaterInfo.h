@@ -22,6 +22,7 @@
     
 }
 
+//create properties to hold all theater data
 @property (nonatomic, strong)NSString *name;
 @property (nonatomic, strong)NSString *location;
 @property (nonatomic, strong)UIImage *image;

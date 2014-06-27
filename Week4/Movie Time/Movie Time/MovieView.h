@@ -20,15 +20,20 @@
 
 @interface MovieView : UIViewController
 {
+    
+    //Create UI objects to show movie data
     MPMoviePlayerController *moviePlayer;
     IBOutlet UIView *movieView;
     IBOutlet UILabel *titleLabel;
     
 }
 
+//Set up finctions for my control buttons
 -(IBAction)onPlay:(id)sender;
 -(IBAction)onStop:(id)sender;
 
+
+//property of my custom MovieInfo type that will recieve the chosen movie
 @property (nonatomic, strong)MovieInfo *currentMovie;
 
 @end

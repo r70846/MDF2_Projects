@@ -26,7 +26,8 @@
     
     self = [super init];
     if (self) {
-        // Initialization code
+        
+        // Load properties of object on init
         title = movieTitle;
         image = movieImage;
         showtimes = movieShowtimes;

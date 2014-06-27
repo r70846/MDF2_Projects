@@ -13,9 +13,9 @@
     
 }
 
+//create reference to my UI Elements
 @property (nonatomic, strong)IBOutlet UILabel *cellLabel;
 @property (nonatomic, strong)IBOutlet UILabel *showtimesLabel;
-
 @property (nonatomic, strong)IBOutlet UIImageView *movieImage;
 
 @end

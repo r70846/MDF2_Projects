@@ -21,6 +21,7 @@
     
 }
 
+//create properties to hold all movie data
 @property (nonatomic, strong)NSString *title;
 @property (nonatomic, strong)UIImage *image;
 @property (nonatomic, strong)NSString *showtimes;
@@ -30,7 +31,7 @@
 
 
 
-//My custom init method
+//Set up a custom init method
 -(id)initWithData:(NSString*)movieTitle movieImage:(UIImage*)movieImage movieShowtimes:(NSString*)movieShowtimes preview:(NSString*)preview movieCitation:(NSString*)movieCitation;
 
 

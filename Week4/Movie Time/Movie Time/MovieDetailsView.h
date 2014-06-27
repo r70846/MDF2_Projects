@@ -19,16 +19,18 @@
 
 @interface MovieDetailsView : UIViewController
 {
+    
+    //create internal reference to my UI Elements
     IBOutlet UILabel *titleLabel;
     IBOutlet UILabel *showtimesLabel;
     IBOutlet UILabel *citationLabel;
     IBOutlet UIImageView *movieImage;
 }
 
+
+//property of my custom MovieInfo type that will recieve the chosen movie
 @property (nonatomic, strong)MovieInfo *currentMovie;
 
 
-
--(IBAction)onClick:(id)sender;
 
 @end

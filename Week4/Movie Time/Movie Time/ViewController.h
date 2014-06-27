@@ -21,14 +21,17 @@
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     
-    
+    //set up main array to hold custom theater objetcs
     NSMutableArray *theaterList;
     
-    IBOutlet UITableView *mainTableView;    //Table view reference
+    //provide table view reference
+    IBOutlet UITableView *mainTableView;
 }
 
+//provide a place to come home to for "unwind" segue
 -(IBAction)done:(UIStoryboardSegue*)segue;
 
+//set up function to load custom objects and arrays on start
 -(void)loadData;
 
 @end

@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad
 {
-    
+    //Load UI elements with data from the passed MovieInfo object
     titleLabel.text = _currentMovie.title;
     showtimesLabel.text = _currentMovie.showtimes;
     citationLabel.text = _currentMovie.citation;
@@ -55,23 +55,19 @@
 //Called when we go to the detail view
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //UIButton *btn = (UIButton*)sender;
+    //Only pass MovieInfo object if we're on our way to the movie view
     if([segue.identifier isEqualToString:@"segueToMovieView"])
     {
+        //get reference to movie view
         MovieView *movieView = segue.destinationViewController;
         
         if (movieView != nil)
         {      
-            //Set the MovieInfo property in detail view to the chosen one
+            //Set the MovieInfo property in "movie view" to the chosen one
             movieView.currentMovie = _currentMovie;
         }
     }
 }
 
--(IBAction)onClick:(id)sender
-{
-    
-    [self performSegueWithIdentifier:@"segueBackFromMovie" sender:sender];
-    //[self dismissViewControllerAnimated:NO completion:nil];
-}
+
 @end
