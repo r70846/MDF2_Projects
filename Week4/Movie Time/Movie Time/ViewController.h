@@ -16,14 +16,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MovieInfo.h"
+#import "TheaterInfo.h"
 
 @interface ViewController : UIViewController
 {
     
-    NSMutableArray *movieList;
     
-    
-    MovieInfo *currentMovie;
+    NSMutableArray *theaterList;
+
 }
 
 

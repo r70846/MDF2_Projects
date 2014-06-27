@@ -27,4 +27,7 @@
 @property (nonatomic, strong)UIImage *image;
 @property (nonatomic, strong)NSMutableArray *movies;
 
+
+-(id)init;
+
 @end

@@ -19,5 +19,17 @@
 @implementation TheaterInfo
 @synthesize name, location, image, movies;
 
+//My custom init method
+-(id)init
+{
+    
+    self = [super init];
+    if (self) {
+           movies = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+    
+}
 
 @end
