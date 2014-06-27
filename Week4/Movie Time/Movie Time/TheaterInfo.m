@@ -25,7 +25,7 @@
     
     self = [super init];
     if (self) {
-           movies = [[NSMutableArray alloc] init];
+        movies = [[NSMutableArray alloc] init];
     }
     
     return self;

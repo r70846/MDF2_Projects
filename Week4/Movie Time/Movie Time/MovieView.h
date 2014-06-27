@@ -15,7 +15,20 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "MovieInfo.h"
 
 @interface MovieView : UIViewController
+{
+    MPMoviePlayerController *moviePlayer;
+    IBOutlet UIView *movieView;
+    IBOutlet UILabel *titleLabel;
+    
+}
+
+-(IBAction)onPlay:(id)sender;
+-(IBAction)onStop:(id)sender;
+
+@property (nonatomic, strong)MovieInfo *currentMovie;
 
 @end

@@ -15,7 +15,20 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "MovieInfo.h"
 
 @interface MovieDetailsView : UIViewController
+{
+    IBOutlet UILabel *titleLabel;
+    IBOutlet UILabel *showtimesLabel;
+    IBOutlet UILabel *citationLabel;
+    IBOutlet UIImageView *movieImage;
+}
+
+@property (nonatomic, strong)MovieInfo *currentMovie;
+
+
+
+-(IBAction)onClick:(id)sender;
 
 @end

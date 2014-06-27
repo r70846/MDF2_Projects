@@ -23,8 +23,12 @@
     
     
     NSMutableArray *theaterList;
+    
+    IBOutlet UITableView *mainTableView;    //Table view reference
 }
 
+-(IBAction)done:(UIStoryboardSegue*)segue;
 
+-(void)loadData;
 
 @end

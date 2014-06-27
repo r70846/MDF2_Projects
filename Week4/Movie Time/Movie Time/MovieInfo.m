@@ -21,7 +21,7 @@
 
 
 //My custom init method
--(id)initWithData:(NSString*)movieTitle movieImage:(UIImage*)movieImage movieShowtimes:(NSArray*)movieShowtimes preview:(NSString*)preview movieCitation:(NSString*)movieCitation
+-(id)initWithData:(NSString*)movieTitle movieImage:(UIImage*)movieImage movieShowtimes:(NSString*)movieShowtimes preview:(NSString*)preview movieCitation:(NSString*)movieCitation
 {
     
     self = [super init];
@@ -33,7 +33,7 @@
         trailerURL = preview;
         citation = movieCitation;
     }
-
+    
     return self;
     
 }

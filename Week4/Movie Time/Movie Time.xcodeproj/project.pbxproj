@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6042E0BB195DB3E5006D3C91 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 6042E0BA195DB3E5006D3C91 /* img */; };
 		6059D016195C862500DED7C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6059D015195C862500DED7C5 /* Foundation.framework */; };
 		6059D018195C862500DED7C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6059D017195C862500DED7C5 /* CoreGraphics.framework */; };
 		6059D01A195C862500DED7C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6059D019195C862500DED7C5 /* UIKit.framework */; };
@@ -26,7 +27,8 @@
 		6059D052195C86E700DED7C5 /* MovieInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6059D051195C86E700DED7C5 /* MovieInfo.m */; };
 		6059D055195C870C00DED7C5 /* TheaterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6059D054195C870C00DED7C5 /* TheaterInfo.m */; };
 		6059D058195CFE7600DED7C5 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6059D057195CFE7600DED7C5 /* CustomTableCell.m */; };
-		6059D05E195D0CF600DED7C5 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 6059D05D195D0CF600DED7C5 /* img */; };
+		6059D060195D1B0500DED7C5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6059D05F195D1B0500DED7C5 /* MediaPlayer.framework */; };
+		6059D062195D1B7700DED7C5 /* vid in Resources */ = {isa = PBXBuildFile; fileRef = 6059D061195D1B7700DED7C5 /* vid */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6042E0BA195DB3E5006D3C91 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		6059D012195C862500DED7C5 /* Movie Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6059D015195C862500DED7C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6059D017195C862500DED7C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -69,7 +72,8 @@
 		6059D054195C870C00DED7C5 /* TheaterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheaterInfo.m; sourceTree = "<group>"; };
 		6059D056195CFE7600DED7C5 /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
 		6059D057195CFE7600DED7C5 /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
-		6059D05D195D0CF600DED7C5 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
+		6059D05F195D1B0500DED7C5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		6059D061195D1B7700DED7C5 /* vid */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vid; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6059D060195D1B0500DED7C5 /* MediaPlayer.framework in Frameworks */,
 				6059D018195C862500DED7C5 /* CoreGraphics.framework in Frameworks */,
 				6059D01A195C862500DED7C5 /* UIKit.framework in Frameworks */,
 				6059D016195C862500DED7C5 /* Foundation.framework in Frameworks */,
@@ -118,6 +123,7 @@
 		6059D014195C862500DED7C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6059D05F195D1B0500DED7C5 /* MediaPlayer.framework */,
 				6059D015195C862500DED7C5 /* Foundation.framework */,
 				6059D017195C862500DED7C5 /* CoreGraphics.framework */,
 				6059D019195C862500DED7C5 /* UIKit.framework */,
@@ -129,7 +135,7 @@
 		6059D01B195C862500DED7C5 /* Movie Time */ = {
 			isa = PBXGroup;
 			children = (
-				6059D05D195D0CF600DED7C5 /* img */,
+				6042E0BA195DB3E5006D3C91 /* img */,
 				6059D024195C862500DED7C5 /* AppDelegate.h */,
 				6059D025195C862500DED7C5 /* AppDelegate.m */,
 				6059D027195C862500DED7C5 /* Main.storyboard */,
@@ -139,6 +145,7 @@
 				6059D04B195C86B100DED7C5 /* MovieDetailsView.m */,
 				6059D04D195C86C800DED7C5 /* MovieView.h */,
 				6059D04E195C86C800DED7C5 /* MovieView.m */,
+				6059D061195D1B7700DED7C5 /* vid */,
 				6059D050195C86E700DED7C5 /* MovieInfo.h */,
 				6059D051195C86E700DED7C5 /* MovieInfo.m */,
 				6059D053195C870C00DED7C5 /* TheaterInfo.h */,
@@ -256,10 +263,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6059D05E195D0CF600DED7C5 /* img in Resources */,
+				6042E0BB195DB3E5006D3C91 /* img in Resources */,
 				6059D02E195C862600DED7C5 /* Images.xcassets in Resources */,
 				6059D020195C862500DED7C5 /* InfoPlist.strings in Resources */,
 				6059D029195C862500DED7C5 /* Main.storyboard in Resources */,
+				6059D062195D1B7700DED7C5 /* vid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +502,7 @@
 				6059D046195C862600DED7C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6059D047195C862600DED7C5 /* Build configuration list for PBXNativeTarget "Movie TimeTests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +511,7 @@
 				6059D049195C862600DED7C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
