@@ -61,7 +61,7 @@
         MovieView *movieView = segue.destinationViewController;
         
         if (movieView != nil)
-        {
+        {      
             //Set the MovieInfo property in detail view to the chosen one
             movieView.currentMovie = _currentMovie;
         }

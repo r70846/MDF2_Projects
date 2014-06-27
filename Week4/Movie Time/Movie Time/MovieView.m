@@ -39,7 +39,6 @@
     
     titleLabel.text = _currentMovie.title;
     
-    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -47,7 +46,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
+
     [super viewDidAppear:true];
 }
 
@@ -61,6 +60,7 @@
 
 -(IBAction)onPlay:(id)sender
 {
+    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:_currentMovie.trailerURL ofType:@"mp4" inDirectory:@"vid"];
     
     //use URL because the Movie Player is designed to load files locally or remotely

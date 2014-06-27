@@ -30,13 +30,23 @@
 
 - (void)viewDidLoad
 {
-    
     //Run main funtion to set up data objects and arrays
     [self loadData];
     
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    //Run main funtion to set up data objects and arrays
+    [self loadData];
+    
+    [super viewWillAppear:animated];
+	
+    //Deselect any selected selected cell on view load
+    [mainTableView deselectRowAtIndexPath:[mainTableView indexPathForSelectedRow] animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -57,6 +67,9 @@
     UITableViewHeaderFooterView *headerView = (UITableViewHeaderFooterView*) view;
     if(headerView != nil)
     {
+        //Darken backround tint
+        headerView.tintColor = [UIColor darkGrayColor];
+        
         //Get access to data for each section
         TheaterInfo *currentTheater = [theaterList objectAtIndex:section];
         
@@ -64,6 +77,8 @@
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(70.0f,5.0f,250.0f,25.0f)];
         
         nameLabel.text = currentTheater.name;
+        nameLabel.textColor = [UIColor whiteColor];
+        nameLabel.font = [UIFont boldSystemFontOfSize:18.0f];
         //nameLabel.backgroundColor = [UIColor redColor];
         
         //Add Name Label for Theater
@@ -73,6 +88,8 @@
         UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(70.0f,31.0f,250.0f,20.0f)];
         
         locationLabel.text = currentTheater.location;
+        locationLabel.textColor = [UIColor whiteColor];
+        locationLabel.font = [UIFont systemFontOfSize:15.0f];
         //locationLabel.backgroundColor = [UIColor yellowColor];
         
         [headerView.contentView addSubview:locationLabel];
@@ -109,6 +126,9 @@
         cell.showtimesLabel.text = currentMovie.showtimes;
         cell.movieImage.image = currentMovie.image;
     }
+    
+
+    
     return cell;
 }
 
