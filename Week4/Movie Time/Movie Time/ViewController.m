@@ -17,6 +17,8 @@
 #import "ViewController.h"
 #import "MovieInfo.h"
 #import "TheaterInfo.h"
+#import "CustomTableCell.h"
+
 
 @interface ViewController ()
 
@@ -204,7 +206,7 @@
     
     
 //////////  DEBUG LOG CODE ////////////////////////////////////////
-
+/*
     for(int i = 0; i < [theaterList count]; i++)
     {
         
@@ -226,7 +228,7 @@
         }
         
     }
-    
+*/   
 //////////////////////////////////////////////////////////////////
     
     
@@ -239,5 +241,35 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    TheaterInfo *currentTheater = [theaterList objectAtIndex:section];
+    
+    return [currentTheater.movies count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    TheaterInfo *currentTheater = [theaterList objectAtIndex:indexPath.section];
+     
+    CustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
+    if(cell != nil)
+    {
+        MovieInfo *currentMovie = [currentTheater.movies objectAtIndex:indexPath.row];
+        cell.cellLabel.text = currentMovie.title;
+        
+    }
+    return cell;
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView // Default is 1 if not implemented
+{
+    return [theaterList count];
+}
+
+
 
 @end

@@ -18,7 +18,7 @@
 #import "MovieInfo.h"
 #import "TheaterInfo.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     
     
